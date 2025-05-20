@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: star-agile-health-care
+  labels:
+    app: health-care
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: health-care
+  template:
+    metadata:
+      labels:
+        app: health-care
+    spec:
+      containers:
+        - name: health-care-container
+          image: vaibhav735/medicure:1.0
+          ports:
+            - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: health-care-service
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+  selector: 
+      app: health-care
