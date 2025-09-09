@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: insurance
-          image: vaibhav735/insme:1
+          image: vaibhav735/iinsure:1
           ports:
             - containerPort: 8081
           env:
